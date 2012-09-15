@@ -4,7 +4,7 @@
 <h1>{% trans "Inbox" %}</h1>
 {% if messages %}
 <ul class="messages">
-    {% for message in messages %}
+    {% for message in messages %} <!-- At some point, need to make this popup-y, maybe it belongs in compose.html? -->
     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
     {% endfor %}
 </ul>

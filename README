@@ -4,3 +4,11 @@ User-to-user messaging app for Django
 This is a basic messaging application for the django web-framework, please
 see the /docs/ directory for more information. 
 
+I am currently updating this repo to conform to Django 1.4 - the 0.4.4 version of 
+Django-Messages has several deprecated functions that cause breakage. Please feel 
+free to contribute, or point me in the right direction if the work has already been done!
+
+Thanks,
+
+Jim
+

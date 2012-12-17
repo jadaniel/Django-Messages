@@ -9,7 +9,7 @@ from django.utils.translation import ugettext as _
 from django.utils.translation import ugettext_noop
 from django.core.urlresolvers import reverse
 from django.conf import settings
-
+from django.core.mail import send_mail
 from messages.models import Message
 from messages.forms import ComposeForm
 from messages.utils import format_quote
@@ -80,6 +80,7 @@ def compose(request, recipient=None, form_class=ComposeForm,
                 success_url = reverse('messages_inbox')
             if request.GET.has_key('next'):
                 success_url = request.GET['next']
+            #send_mail('You have a new message waiting at HelloLocals.com!', 'Here is the message.', 'info@hellolocals.com', ['to@example.com'], fail_silently=False)
             return HttpResponseRedirect(success_url)
     else:
         form = form_class()
@@ -109,6 +110,7 @@ def reply(request, message_id, form_class=ComposeForm,
             messages.success(request, _(u'Message successfully sent.'))
             if success_url is None:
                 success_url = reverse('messages_inbox')
+            #send_mail('You have a new message waiting at HelloLocals.com!', 'Here is the message.', 'info@hellolocals.com', ['to@example.com'], fail_silently=False)
             return HttpResponseRedirect(success_url)
     else:
         form = form_class({

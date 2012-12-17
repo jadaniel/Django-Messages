@@ -8,6 +8,8 @@ I am currently updating this repo to conform to Django 1.4 - the 0.4.4 version o
 Django-Messages has several deprecated functions that cause breakage. Please feel 
 free to contribute, or point me in the right direction if the work has already been done!
 
+Additionally, I am modifying the project to include BootStrap tags which will update they look/style of the messages package. Obviously, you must be using bootstrap in your app to take advantage of these stylings.
+
 Thanks,
 
 Jim

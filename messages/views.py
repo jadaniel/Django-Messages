@@ -13,12 +13,14 @@ from django.core.mail import send_mail
 from messages.models import Message
 from messages.forms import ComposeForm
 from messages.utils import format_quote
+from django.contrib.auth.decorators import login_required
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
 else:
     notification = None
 
+@login_required
 def inbox(request, template_name='messages/inbox.html'):
     """
     Displays a list of received messages for the current user.
@@ -29,8 +31,9 @@ def inbox(request, template_name='messages/inbox.html'):
     return render_to_response(template_name, {
         'message_list': message_list,
     }, context_instance=RequestContext(request))
-inbox = login_required(inbox)
 
+
+@login_required
 def outbox(request, template_name='messages/outbox.html'):
     """
     Displays a list of sent messages by the current user.
@@ -41,8 +44,9 @@ def outbox(request, template_name='messages/outbox.html'):
     return render_to_response(template_name, {
         'message_list': message_list,
     }, context_instance=RequestContext(request))
-outbox = login_required(outbox)
 
+
+@login_required
 def trash(request, template_name='messages/trash.html'):
     """
     Displays a list of deleted messages. 
@@ -55,7 +59,7 @@ def trash(request, template_name='messages/trash.html'):
     return render_to_response(template_name, {
         'message_list': message_list,
     }, context_instance=RequestContext(request))
-trash = login_required(trash)
+    
 
 def compose(request, recipient=None, form_class=ComposeForm,
         template_name='messages/compose.html', success_url=None, recipient_filter=None):

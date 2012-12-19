@@ -18,7 +18,7 @@ def format_quote(text):
     line with `> `.
     Used for quoting messages in replies.
     """
-    lines = wrap(text, 55).split('\n')
+    lines = wrap(text, 80).split('\n')
     for i, line in enumerate(lines):
         lines[i] = "> %s" % line
     return '\n'.join(lines)
